@@ -15,7 +15,7 @@ food = PVector(0, 0)
 
 def setup():
     global longSnake, food, snakeSize
-    size(190, 190)
+    size(255, 255)
     
     #bestemmer hvor lang vores slange skal være,
     #før vi sletter den ældste del af slangen.
@@ -24,7 +24,7 @@ def setup():
     #Da vores logik er bundet til frameraten, kan vi
     #forøge hastigheden ved at hæve vores framerate.
     #prøv det
-    frameRate(4)
+    frameRate(10)
     
     #vi tilføjer den første del af vores slange
     longSnake.append(PVector(9*10, 9*10))
@@ -39,7 +39,7 @@ def setup():
 def draw():
     global longSnake, food, snakeSize
     
-    background(0)
+    background(255)
     
     #tegner maden
     fill(255,0,0)
@@ -54,7 +54,7 @@ def draw():
     
     #går igennem vært segment af vores slange
     #og tegner den.
-    fill(255)
+    fill (0,255,0)
     for i in range(len(longSnake)-1, 0, -1):
         rect(longSnake[i].x, longSnake[i].y,10,10)
         
@@ -73,23 +73,7 @@ def draw():
             #vores for-loop, uden at gøre det færdigt
             break
     
-    # hvis slangen går ud fra skærmen, kommer den ind igen fra den anden side
-    
-    if longSnake[len(longSnake)-1].x == width:
-        longSnake[len(longSnake)-1].x = 0
-
-    elif longSnake[len(longSnake)-1].x < 0:
-        longSnake[len(longSnake)-1].x = width - 10
-
-    elif longSnake[len(longSnake)-1].y == height:
-        longSnake[len(longSnake)-1].y = 0
-
-    elif longSnake[len(longSnake)-1].y < 0:        
-        longSnake[len(longSnake)-1].y = height - 10
-
-
-    
-      #kollision detection for vores mad.
+    #kollision detection for vores mad.
     #her tjekker vi om slangens hoved er det
     #samme sted som maden
     if food.x == longSnake[len(longSnake)-1].x and food.y == longSnake[len(longSnake)-1].y:
@@ -97,9 +81,8 @@ def draw():
         #vi flytter vores med et nyt sted
         food = PVector(floor(random(0,18))*10, floor(random(0,18))*10)
         
-        snakeSize += 1
+        snakeSize += 50
     
-
     
     #vi fjerner den ældste del
     #af vores slange, så det ser ud som om
