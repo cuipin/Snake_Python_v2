@@ -73,7 +73,23 @@ def draw():
             #vores for-loop, uden at gøre det færdigt
             break
     
-    #kollision detection for vores mad.
+    # hvis slangen går ud fra skærmen, kommer den ind igen fra den anden side
+    
+    if longSnake[len(longSnake)-1].x == width:
+        longSnake[len(longSnake)-1].x = 0
+
+    elif longSnake[len(longSnake)-1].x < 0:
+        longSnake[len(longSnake)-1].x = width - 10
+
+    elif longSnake[len(longSnake)-1].y == height:
+        longSnake[len(longSnake)-1].y = 0
+
+    elif longSnake[len(longSnake)-1].y < 0:        
+        longSnake[len(longSnake)-1].y = height - 10
+
+
+    
+      #kollision detection for vores mad.
     #her tjekker vi om slangens hoved er det
     #samme sted som maden
     if food.x == longSnake[len(longSnake)-1].x and food.y == longSnake[len(longSnake)-1].y:
@@ -82,7 +98,8 @@ def draw():
         food = PVector(floor(random(0,18))*10, floor(random(0,18))*10)
         
         snakeSize += 1
-        frameRate(frameRate+1)
+    
+
     
     #vi fjerner den ældste del
     #af vores slange, så det ser ud som om
@@ -103,7 +120,7 @@ def keyPressed():
         elif keyCode == DOWN and dir.y != -1:
             dir.y = 1
             dir.x = 0
-    elif keyCode == LEFT and dir.x != 1:
+        elif keyCode == LEFT and dir.x != 1:
             dir.x = -1
             dir.y = 0
         elif keyCode == RIGHT and dir.x != -1:
