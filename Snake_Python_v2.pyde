@@ -82,7 +82,7 @@ def draw():
         food = PVector(floor(random(0,18))*10, floor(random(0,18))*10)
         
         snakeSize += 1
-    
+        frameRate(frameRate+1)
     
     #vi fjerner den ældste del
     #af vores slange, så det ser ud som om
@@ -103,7 +103,7 @@ def keyPressed():
         elif keyCode == DOWN and dir.y != -1:
             dir.y = 1
             dir.x = 0
-        elif keyCode == LEFT and dir.x != 1:
+    elif keyCode == LEFT and dir.x != 1:
             dir.x = -1
             dir.y = 0
         elif keyCode == RIGHT and dir.x != -1:
